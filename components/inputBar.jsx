@@ -4,7 +4,7 @@ export const InputBar = ({onChangeText, text}) => {
     
   
     return (
-        <View>
+        <View style={styles.inputContainer}>
             <TextInput
                 style={styles.input}
                 onChangeText={onChangeText}
@@ -17,12 +17,16 @@ export const InputBar = ({onChangeText, text}) => {
 }
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    flex: 1,
+  },
     input : {
       borderColor:'mediumorchid',
       height: 40,
-      margin: 12,
+      margin: 8, 
       borderWidth: 1,
       padding: 10,
-      borderRadius: 10
+      borderRadius: 10,
+      flex: 1,  
     }
   });

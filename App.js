@@ -35,27 +35,28 @@ export default function App() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-
-    <View style={styles.container}>
-      <Text style={styles.title}>Tasks list</Text>
-      
-      <Separator/>
-      
-      < InputArea onChangeText={handleInputChange} text={inputValue} handlePress={handleSubmit} />
-
-      <List items={items} onDelete={handleDelete} />
-    </View>
+      <View style={styles.allComponentsContainer}>
+      <View style={styles.InputAreaContainer}>
+        <Text style={styles.title}>Tasks list</Text>
+        <Separator/> 
+      </View>
+        < InputArea onChangeText={handleInputChange} text={inputValue} handlePress={handleSubmit} />
+        <List items={items} onDelete={handleDelete} />
+      </View> 
     </GestureHandlerRootView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  allComponentsContainer: {
     flex:1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'flex-start',
     marginHorizontal: 16,  
+  },
+  InputAreaContainer: {  
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   title: {
     textAlign: 'center',

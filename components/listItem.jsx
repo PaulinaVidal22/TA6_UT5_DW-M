@@ -1,21 +1,20 @@
 import { StyleSheet, View, Text} from "react-native";
 import { RectButton} from 'react-native-gesture-handler';
-// import ReanimatedSwipeable from 'react-native-reanimated';
-import { Swipeable } from 'react-native-gesture-handler/ReanimatedSwipeable';
-
+import { Swipeable } from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const ListItem = ( {item, index, onDelete}) => {
     
     const renderRightActions = () => {
         return (
           <RectButton style={styles.deleteButton} onPress={() => onDelete(index)}>
-            <Text style={styles.deleteButtonText}>Delete</Text>
+            <Icon name="trash" size={24} color="white" />
           </RectButton>
         );
       };
     
     return ( 
-        <Swipeable renderRightActions={renderRightActions}>
+        <Swipeable renderRightActions={renderRightActions} containerStyle={styles.swipeableContainer}>
         <View style={styles.itemContainer}>
             <View style={styles.item}>
             <Text style={styles.name}>{item}</Text>
@@ -26,20 +25,26 @@ export const ListItem = ( {item, index, onDelete}) => {
 }
 
 const styles = StyleSheet.create({
+  swipeableContainer: {
+    width: '100%',  
+    flex: 1,         
+  },
     itemContainer:{
-        paddingTop:10,
-        paddingBottom:10,
+      flex: 1, 
+      backgroundColor: '#fff',
+      paddingVertical: 15,
+      paddingHorizontal: 20,
+      justifyContent: 'center',
     },
     item: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        rowGap: 10,
-        alignContent:'center'
+        alignItems: 'center',
+        paddingHorizontal: 20,
     },
     name : {
         fontWeight: 'bold',
         fontSize: 20,
-        paddingEnd: 10
     },
     deleteButton: {
       backgroundColor: 'red',
@@ -47,10 +52,6 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       width: 80,
       height: '100%',
-    },
-    deleteButtonText: {
-      color: '#fff',
-      fontWeight: 'bold',
-      fontSize: 16,
+      width: '100%',
     },
   });
